@@ -1,0 +1,21 @@
+{
+  "name": "lighthouse_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hover-nodejs": "^1.0.3",
+    "mongoose": "^4.13.9",
+    "nodemon": "^1.14.11"
+  }
+}
