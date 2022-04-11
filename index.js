@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-const hover = require('hover-nodejs');
 
 // connect to mongodb on mLab
 //mongoose.connect(keys.mongoURI);
@@ -15,8 +14,15 @@ const app = express();
 // bodyParser enables us to read the request body as req.body
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-instance");
+  next();
+});
+
 // calls the functions from the files in routes/
-require('./routes/modules/weather/weatherRoutes')(app);
+require('./routes/modules/weather/routes')(app);
+require('./routes/modules/transit/routes')(app);
 // require('./routes/billingRoutes.js')(app);
 // require('./routes/surveyRoutes.js')(app);
 
@@ -32,5 +38,5 @@ require('./routes/modules/weather/weatherRoutes')(app);
 //   });
 // }
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4010;
 app.listen(PORT, '0.0.0.0');
